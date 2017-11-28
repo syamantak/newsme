@@ -60,7 +60,7 @@
                             <label for="total" class="col-md-4 control-label">From Date</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" name="from_date" type="text" value="{{ $bill->from_date }}">
+                                <input class="form-control" name="from_date" type="text" value="{{ $bill->from_date }}" id="from_datepicker">
 
                                 @if ($errors->has('date'))
                                     <span class="help-block">
@@ -74,7 +74,7 @@
                             <label for="total" class="col-md-4 control-label">To Date</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" name="to_date" type="text" value="{{ $bill->to_date }}">
+                                <input class="form-control" name="to_date" type="text" value="{{ $bill->to_date }}" id="to_datepicker">
 
                                 @if ($errors->has('to_date'))
                                     <span class="help-block">
