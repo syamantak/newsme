@@ -33,7 +33,7 @@ class PaperboyController extends Controller
             'mobile' => $request->mobile,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Paperboy created successfully.');
         return back();
     }
 
@@ -56,13 +56,14 @@ class PaperboyController extends Controller
     	$paperboy->address = $request->address;
     	$paperboy->mobile = $request->mobile;
     	$paperboy->save();
-
+    	$request->session()->flash('message', 'Paperboy updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Paperboy::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Paperboy deleted successfully.');
     	return back();
     }
 
@@ -74,7 +75,7 @@ class PaperboyController extends Controller
 
         $paperboys = Paperboy::where('name', 'like', '%' . $request->search . '%')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results.');
     	return view('paperboy.list', ['paperboys' => $paperboys]);
     }
 }

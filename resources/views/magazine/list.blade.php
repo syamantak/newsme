@@ -7,15 +7,10 @@
     	<br><br>
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Magazines List</div>
+                <div class="panel-heading clearfix">Magazines List
+                    
+                </div>
                 <div class="panel-body">
-
-                    <span class="pull-right">
-                        <form action="{{ url('magazine/search') }}" method="get" class="form-inline">
-                            <input class="form-control" type="text" name="search" placeholder="Enter magazine name...">
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </form>
-                    </span>
                     <table class="table">
                         <thead>
                             <tr>
@@ -41,6 +36,12 @@
                         </tbody>
                     </table>
                     {{ $magazines->links() }}
+                </div>
+                <div class="panel-footer clearfix">
+                    <form action="{{ url('magazine/search') }}" method="get" class="form-inline pull-right">
+                            <input class="form-control" type="text" name="search" placeholder="Magazine...">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
                 </div>
             </div> 
         </div>

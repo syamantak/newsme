@@ -7,14 +7,11 @@
     	<br><br>
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Paperboy List</div>
+                <div class="panel-heading clearfix">
+                    Paperboy List
+                    
+                </div>
                 <div class="panel-body">
-                    <span class="pull-right">
-                        <form action="{{ url('paperboy/search') }}" method="get" class="form-inline">
-                            <input class="form-control" type="text" name="search" placeholder="Enter paperboy">
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </form>
-                    </span>
                     <table class="table">
                         <thead>
                             <tr>
@@ -40,6 +37,12 @@
                         </tbody>
                     </table>
                     {{ $paperboys->links() }}
+                </div>
+                <div class="panel-footer clearfix">
+                    <form action="{{ url('paperboy/search') }}" method="get" class="form-inline pull-right">
+                            <input class="form-control" type="text" name="search" placeholder="Paperboy...">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
                 </div>
             </div> 
         </div>

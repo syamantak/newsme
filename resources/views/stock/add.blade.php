@@ -84,7 +84,7 @@
                             <label for="date" class="col-md-4 control-label">Date</label>
 
                             <div class="col-md-6">
-                                <input id="date" type="text" class="form-control" name="date" value="{{ old('date') }}" required>
+                                <input id="datepicker" type="text" class="form-control" name="date" value="{{ old('date') }}" required>
 
                                 @if ($errors->has('date'))
                                     <span class="help-block">

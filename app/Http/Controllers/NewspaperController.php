@@ -29,7 +29,7 @@ class NewspaperController extends Controller
             'name' => $request->name,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Newspaper created successfully.');
         return back();
     }
 
@@ -48,13 +48,14 @@ class NewspaperController extends Controller
     	$newspaper = Newspaper::find($request->id);
     	$newspaper->name = $request->name;
     	$newspaper->save();
-
+    	$request->session()->flash('message', 'Newspaper updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Newspaper::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Newspaper deleted successfully.');
     	return back();
     }
 
@@ -66,7 +67,7 @@ class NewspaperController extends Controller
 
         $newspapers = Newspaper::where('name', 'like', '%' . $request->search . '%')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results.');
     	return view('newspaper.list', ['newspapers' => $newspapers]);
     }
 }

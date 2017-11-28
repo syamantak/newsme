@@ -54,7 +54,7 @@
                             <label for="total" class="col-md-4 control-label">From Date</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" name="from_date" type="text">
+                                <input class="form-control" name="from_date" type="text" id="from_datepicker">
 
                                 @if ($errors->has('from_date'))
                                     <span class="help-block">
@@ -70,7 +70,7 @@
                             <label for="total" class="col-md-4 control-label">To Date</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" name="to_date" type="text">
+                                <input class="form-control" name="to_date" type="text" id="to_datepicker">
 
                                 @if ($errors->has('to_date'))
                                     <span class="help-block">
@@ -79,6 +79,8 @@
                                 @endif
                             </div>
                         </div>
+
+                        
 
 
                         <div class="form-group">
@@ -94,4 +96,9 @@
         </div>
     </div>
 </div>
+
+    <script>
+        $('#datepicker').datepicker();
+    </script>
+
 @endsection

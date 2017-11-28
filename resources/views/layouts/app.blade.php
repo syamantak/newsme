@@ -12,6 +12,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!--  jQuery -->
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    
 </head>
 <body>
     <div id="app">
@@ -39,12 +43,12 @@
                         @auth
                             <li><a href="{{ url('customer/list') }}">Customers</a></li>
                             <li><a href="{{ url('newspaper/list') }}">Newspapers</a></li>
-                            <li><a href="{{ url('customernewspaper/list') }}">Customer Newspapers</a></li>
                             <li><a href="{{ url('magazine/list') }}">Magazines</a></li>   
                             <li><a href="{{ url('paperboy/list') }}">Paperboys</a></li>
-                            <li><a href="{{ url('blank/list') }}">Blanks</a></li>  
+                            <li><a href="{{ url('stock/list') }}">Stock</a></li>  
                             <li><a href="{{ url('bill/list') }}">Bills</a></li>                         
-                            <li><a href="{{ url('stock/list') }}">Stock</a></li>                         
+                            <li><a href="{{ url('customernewspaper/list') }}">Customer Newspapers</a></li>
+                            <li><a href="{{ url('blank/list') }}">Customer Blanks</a></li>                                                     
                         @endauth    
                         
                     </ul>
@@ -80,11 +84,25 @@
                 </div>
             </div>
         </nav>
-
+        @if(Session::has('message'))
+            <div class="row" style="text-align: center;">
+                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+            </div>
+        @endif
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+      <script>
+      $(function() {
+        $( "#datepicker" ).datepicker();
+        $( "#from_datepicker" ).datepicker();
+        $( "#to_datepicker" ).datepicker();
+      });
+      </script>
 </body>
 </html>

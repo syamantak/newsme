@@ -33,7 +33,7 @@ class MagazineController extends Controller
             'quantity' => $request->quantity,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Magazine created successfully.');
         return back();
     }
 
@@ -56,13 +56,14 @@ class MagazineController extends Controller
     	$magazine->price = $request->price;
     	$magazine->quantity = $request->quantity;
     	$magazine->save();
-
+    	$request->session()->flash('message', 'Magazine updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Magazine::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Magazine updated successfully.');
     	return back();
     }
 
@@ -74,7 +75,7 @@ class MagazineController extends Controller
 
         $magazines = Magazine::where('name', 'like', '%' . $request->search . '%')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results.');
     	return view('magazine.list', ['magazines' => $magazines]);
     }
 }

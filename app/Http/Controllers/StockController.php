@@ -40,7 +40,7 @@ class StockController extends Controller
             'sold' => $request->sold,
             'date' => $request->date,
         ]);
-
+        $request->session()->flash('message', 'Stock created successfully.');
         return back();
     }
 
@@ -69,13 +69,14 @@ class StockController extends Controller
     	$stock->sold = $request->sold;
     	$stock->date = $request->date;
     	$stock->save();
-
+    	$request->session()->flash('message', 'Stock updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Stock::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Stock deleted successfully.');
     	return back();
     }
 
@@ -90,7 +91,7 @@ class StockController extends Controller
         ->where('newspapers.name', 'like', '%' . $request->search . '%')
         ->select('stocks.*')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results.');
     	return view('stock.list', ['stocks' => $stocks]);
     }
 }

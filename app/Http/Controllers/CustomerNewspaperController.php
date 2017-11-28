@@ -37,7 +37,7 @@ class CustomerNewspaperController extends Controller
 	            'user' => Auth::user()->id
 	        ]);
         }
-
+        $request->session()->flash('message', 'Record created successfully.');
         return back();
     }
 
@@ -60,7 +60,7 @@ class CustomerNewspaperController extends Controller
     	$customernewspaper->customer = $request->customer;
     	$customernewspaper->newspaper = $request->newspaper;
     	$customer->save();
-
+    	$request->session()->flash('message', 'Record updated successfully.');
     	return back();
     }
 
@@ -82,6 +82,7 @@ class CustomerNewspaperController extends Controller
         ->select('customer_newspapers.*')
         ->paginate(10);
 
+        $request->session()->flash('message', 'Search results.');
     	return view('customernewspaper.list', ['customernewspapers' => $customernewspapers]);
     }
 }

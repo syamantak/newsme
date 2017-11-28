@@ -58,7 +58,7 @@
                             <label for="total" class="col-md-4 control-label">Date</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" name="date" type="text">
+                                <input class="form-control" name="date" type="text" id="datepicker">
 
                                 @if ($errors->has('date'))
                                     <span class="help-block">

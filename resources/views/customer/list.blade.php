@@ -7,14 +7,10 @@
     	<br><br>
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Customers List</div>
+                <div class="panel-heading clearfix">Customers List
+                	
+                </div>
                 <div class="panel-body">
-                	<span class="pull-right">
-                        <form action="{{ url('customer/search') }}" method="get" class="form-inline">
-                            <input class="form-control" type="text" name="search" placeholder="Enter customer name...">
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </form>
-                    </span>
                     <table class="table">
                         <thead>
                             <tr>
@@ -40,6 +36,12 @@
                         </tbody>
                     </table>
                     {{ $customers->links() }}
+                </div>
+                <div class="panel-footer clearfix">
+                	<form action="{{ url('customer/search') }}" method="get" class="form-inline pull-right">
+                            <input class="form-control" type="text" name="search" placeholder="Customer...">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
                 </div>
             </div> 
         </div>

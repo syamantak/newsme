@@ -38,7 +38,7 @@ class BlankController extends Controller
             'date' => $request->date,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Blank created successfully.');
         return back();
     }
 
@@ -63,13 +63,14 @@ class BlankController extends Controller
     	$blank->newspaper = $request->newspaper;
     	$blank->date = $request->date;
     	$blank->save();
-
+    	$request->session()->flash('message', 'Blank updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Blank::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Blank deleted successfully.');
     	return back();
     }
 
@@ -84,7 +85,7 @@ class BlankController extends Controller
         ->where('customers.name', 'like', '%' . $request->search . '%')
         ->select('blanks.*')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results');
     	return view('blank.list', ['blanks' => $blanks]);
     }
 }

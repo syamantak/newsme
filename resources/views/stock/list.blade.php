@@ -7,14 +7,10 @@
     	<br><br>
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Stock</div>
+                <div class="panel-heading clearfix">Stock 
+                    
+                </div>
                 <div class="panel-body">
-                    <span class="pull-right">
-                        <form action="{{ url('stock/search') }}" method="get" class="form-inline">
-                            <input class="form-control" type="text" name="search" placeholder="Enter newspaper">
-                            <button type="submit" class="btn btn-default">Search</button>
-                        </form>
-                    </span>
                     <table class="table">
                         <thead>
                             <tr>
@@ -42,6 +38,12 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
+                <div class="panel-footer clearfix">
+                    <form action="{{ url('stock/search') }}" method="get" class="form-inline pull-right">
+                            <input class="form-control" type="text" name="search" placeholder="Newspaper...">
+                            <button type="submit" class="btn btn-default">Search</button>
+                    </form>
                 </div>
             </div> 
         </div>

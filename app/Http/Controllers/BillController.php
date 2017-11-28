@@ -38,7 +38,7 @@ class BillController extends Controller
             'to_date' => $request->to_date,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Bill created successfully.');
         return back();
     }
 
@@ -63,13 +63,14 @@ class BillController extends Controller
     	$bill->from_date = $request->from_date;
     	$bill->to_date = $request->to_date;
     	$bill->save();
-    	
+    	$request->session()->flash('message', 'Bill updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Bill::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Bill deleted successfully.');
     	return back();
     }
 
@@ -84,7 +85,7 @@ class BillController extends Controller
         ->where('customers.name', 'like', '%' . $request->search . '%')
         ->select('bills.*')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results');
     	return view('bill.list', ['bills' => $bills]);
     }
 }

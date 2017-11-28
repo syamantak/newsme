@@ -33,7 +33,7 @@ class CustomerController extends Controller
             'mobile' => $request->mobile,
             'user' => Auth::user()->id
         ]);
-
+        $request->session()->flash('message', 'Customer created successfully.');
         return back();
     }
 
@@ -56,13 +56,14 @@ class CustomerController extends Controller
     	$customer->address = $request->address;
     	$customer->mobile = $request->mobile;
     	$customer->save();
-
+    	$request->session()->flash('message', 'Customer updated successfully.');
     	return back();
     }
 
     public function delete(Request $request, $id)
     {
     	Customer::where('id', $id)->delete();
+    	$request->session()->flash('message', 'Customer deleted successfully.');
     	return back();
     }
 
@@ -74,7 +75,7 @@ class CustomerController extends Controller
 
         $customers = Customer::where('name', 'like', '%' . $request->search . '%')
         ->paginate(10);
-
+        $request->session()->flash('message', 'Search results.');
     	return view('customer.list', ['customers' => $customers]);
     }
 }
