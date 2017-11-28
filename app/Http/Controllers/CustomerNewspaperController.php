@@ -7,6 +7,7 @@ use App\CustomerNewspaper;
 use App\Customer;
 use App\Newspaper;
 use Auth;
+use DB;
 
 class CustomerNewspaperController extends Controller
 {
@@ -29,12 +30,13 @@ class CustomerNewspaperController extends Controller
             'customer' => 'required',
             'newspaper' => 'required',
         ]);
-
-        CustomerNewspaper::create([
-            'customer' => $request->customer,
-            'newspaper' => $request->newspaper,            
-            'user' => Auth::user()->id
-        ]);
+        foreach ($request->newspaper as $value) {
+        	CustomerNewspaper::create([
+	            'customer' => $request->customer,
+	            'newspaper' => $value,            
+	            'user' => Auth::user()->id
+	        ]);
+        }
 
         return back();
     }
@@ -66,5 +68,20 @@ class CustomerNewspaperController extends Controller
     {
     	CustomerNewspaper::where('id', $id)->delete();
     	return back();
+    }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $customernewspapers = DB::table('customer_newspapers')
+        ->join('customers', 'customers.id', '=', 'customer_newspapers.customer')
+        ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->select('customer_newspapers.*')
+        ->paginate(10);
+
+    	return view('customernewspaper.list', ['customernewspapers' => $customernewspapers]);
     }
 }

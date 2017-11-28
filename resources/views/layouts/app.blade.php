@@ -44,6 +44,7 @@
                             <li><a href="{{ url('paperboy/list') }}">Paperboys</a></li>
                             <li><a href="{{ url('blank/list') }}">Blanks</a></li>  
                             <li><a href="{{ url('bill/list') }}">Bills</a></li>                         
+                            <li><a href="{{ url('stock/list') }}">Stock</a></li>                         
                         @endauth    
                         
                     </ul>

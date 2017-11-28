@@ -65,4 +65,16 @@ class PaperboyController extends Controller
     	Paperboy::where('id', $id)->delete();
     	return back();
     }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $paperboys = Paperboy::where('name', 'like', '%' . $request->search . '%')
+        ->paginate(10);
+
+    	return view('paperboy.list', ['paperboys' => $paperboys]);
+    }
 }

@@ -65,4 +65,16 @@ class MagazineController extends Controller
     	Magazine::where('id', $id)->delete();
     	return back();
     }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $magazines = Magazine::where('name', 'like', '%' . $request->search . '%')
+        ->paginate(10);
+
+    	return view('magazine.list', ['magazines' => $magazines]);
+    }
 }

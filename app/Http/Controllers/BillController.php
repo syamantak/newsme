@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Bill;
 use Auth;
 use App\Customer;
-
+use DB;
 
 class BillController extends Controller
 {
@@ -71,5 +71,20 @@ class BillController extends Controller
     {
     	Bill::where('id', $id)->delete();
     	return back();
+    }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $bills = DB::table('customers')
+        ->join('bills', 'customers.id', '=', 'bills.customer')
+        ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->select('bills.*')
+        ->paginate(10);
+
+    	return view('bill.list', ['bills' => $bills]);
     }
 }

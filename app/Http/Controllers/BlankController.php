@@ -7,7 +7,7 @@ use App\Blank;
 use App\Customer;
 use App\Newspaper;
 use Auth;
-
+use DB;
 
 class BlankController extends Controller
 {
@@ -71,5 +71,20 @@ class BlankController extends Controller
     {
     	Blank::where('id', $id)->delete();
     	return back();
+    }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $blanks = DB::table('customers')
+        ->join('blanks', 'customers.id', '=', 'blanks.customer')
+        ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->select('blanks.*')
+        ->paginate(10);
+
+    	return view('blank.list', ['blanks' => $blanks]);
     }
 }

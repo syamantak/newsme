@@ -65,4 +65,16 @@ class CustomerController extends Controller
     	Customer::where('id', $id)->delete();
     	return back();
     }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $customers = Customer::where('name', 'like', '%' . $request->search . '%')
+        ->paginate(10);
+
+    	return view('customer.list', ['customers' => $customers]);
+    }
 }

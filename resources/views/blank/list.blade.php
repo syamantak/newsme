@@ -9,6 +9,12 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Blank List</div>
                 <div class="panel-body">
+                    <span class="pull-right">
+                        <form action="{{ url('blank/search') }}" method="get" class="form-inline">
+                            <input class="form-control" type="text" name="search" placeholder="Enter customer name">
+                            <button type="submit" class="btn btn-default">Search</button>
+                        </form>
+                    </span>
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,6 +39,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    {{ $blanks->links() }}
                 </div>
             </div> 
         </div>

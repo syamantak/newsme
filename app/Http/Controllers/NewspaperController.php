@@ -57,4 +57,16 @@ class NewspaperController extends Controller
     	Newspaper::where('id', $id)->delete();
     	return back();
     }
+
+    public function search(Request $request)
+    {
+    	$request->validate([
+    		'search' => 'required',
+        ]);
+
+        $newspapers = Newspaper::where('name', 'like', '%' . $request->search . '%')
+        ->paginate(10);
+
+    	return view('newspaper.list', ['newspapers' => $newspapers]);
+    }
 }
