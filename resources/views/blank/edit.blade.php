@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-    	<a href="{{ url('/customer/list') }}" class="btn btn-primary pull-right">Back</a>
+    	<a href="{{ url('/blank/list') }}" class="btn btn-primary pull-right">Back</a>
     	<br><br>
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
