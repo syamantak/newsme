@@ -43,12 +43,12 @@
                         @auth
                             <li><a href="{{ url('customer/list') }}">Customers</a></li>
                             <li><a href="{{ url('newspaper/list') }}">Newspapers</a></li>
-                            <li><a href="{{ url('magazine/list') }}">Magazines</a></li>   
+                            <li><a href="{{ url('customernewspaper/list') }}">Customer Papers</a></li>
+                            <li><a href="{{ url('magazine/list') }}">Magazines & Books</a></li>   
                             <li><a href="{{ url('paperboy/list') }}">Paperboys</a></li>
-                            <li><a href="{{ url('stock/list') }}">Stock</a></li>  
                             <li><a href="{{ url('bill/list') }}">Bills</a></li>                         
-                            <li><a href="{{ url('customernewspaper/list') }}">Customer Newspapers</a></li>
-                            <li><a href="{{ url('blank/list') }}">Customer Blanks</a></li>                                                     
+                            <li><a href="{{ url('blank/list') }}">Customer Blanks</a></li>
+                            <li><a href="{{ url('stock/list') }}">Paper Stock</a></li>                                                      
                         @endauth    
                         
                     </ul>

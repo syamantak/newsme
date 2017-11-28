@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-    	<a href="{{ url('/magazine/add') }}" class="btn btn-primary pull-right">Add Magazine</a>
+    	<a href="{{ url('/magazine/add') }}" class="btn btn-primary pull-right">Add Magazine or Book</a>
     	<br><br>
         <div class="col-md-12">
             <div class="panel panel-default">
