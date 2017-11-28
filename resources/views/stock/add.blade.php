@@ -22,7 +22,7 @@
                             <label for="total" class="col-md-4 control-label">Newspaper</label>
 
                             <div class="col-md-6">
-                                <select name="newspaper" class="form-control" multiple>
+                                <select name="newspaper" class="form-control">
                                     @foreach($newspapers as $newspaper)
                                         <option value="{{ $newspaper->id }}">{{ $newspaper->name }}</option> 
                                     @endforeach                                   
