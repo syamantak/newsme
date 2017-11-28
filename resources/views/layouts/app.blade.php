@@ -46,9 +46,7 @@
                             <li><a href="{{ url('customernewspaper/list') }}">Customer Papers</a></li>
                             <li><a href="{{ url('magazine/list') }}">Magazines & Books</a></li>   
                             <li><a href="{{ url('paperboy/list') }}">Paperboys</a></li>
-                            <li><a href="{{ url('bill/list') }}">Bills</a></li>                         
-                            <li><a href="{{ url('blank/list') }}">Customer Blanks</a></li>
-                            <li><a href="{{ url('stock/list') }}">Paper Stock</a></li>                                                      
+                                                                                  
                         @endauth    
                         
                     </ul>
@@ -66,6 +64,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                    <li><a href="{{ url('bill/list') }}">Bills</a></li>                         
+                                    <li><a href="{{ url('blank/list') }}">Customer Blanks</a></li>
+                                    <li><a href="{{ url('stock/list') }}">Paper Stock</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
