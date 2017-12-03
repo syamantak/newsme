@@ -74,6 +74,7 @@ class PaperboyController extends Controller
         ]);
 
         $paperboys = Paperboy::where('name', 'like', '%' . $request->search . '%')
+        ->where('user', Auth::user()->id)
         ->paginate(10);
         $request->session()->flash('message', 'Search results.');
     	return view('paperboy.list', ['paperboys' => $paperboys]);
