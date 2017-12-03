@@ -83,6 +83,7 @@ class BlankController extends Controller
         $blanks = DB::table('customers')
         ->join('blanks', 'customers.id', '=', 'blanks.customer')
         ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->where('blanks.user', Auth::user()->id)
         ->select('blanks.*')
         ->paginate(10);
         $request->session()->flash('message', 'Search results');

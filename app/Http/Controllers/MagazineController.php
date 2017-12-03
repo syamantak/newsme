@@ -74,6 +74,7 @@ class MagazineController extends Controller
         ]);
 
         $magazines = Magazine::where('name', 'like', '%' . $request->search . '%')
+        ->where('magazines.user', Auth::user()->id)
         ->paginate(10);
         $request->session()->flash('message', 'Search results.');
     	return view('magazine.list', ['magazines' => $magazines]);

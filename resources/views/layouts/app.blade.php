@@ -85,11 +85,13 @@
                 </div>
             </div>
         </nav>
-        @if(Session::has('message'))
-            <div class="row" style="text-align: center;">
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-            </div>
-        @endif
+        <div class="col-md-8 col-md-offset-2">
+            @if(Session::has('message'))
+                <div class="row" style="text-align: center;">
+                    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                </div>
+            @endif
+        </div>
         @yield('content')
     </div>
 

@@ -73,8 +73,9 @@ class CustomerController extends Controller
     		'search' => 'required',
         ]);
 
-        $customers = Customer::where('name', 'like', '%' . $request->search . '%')
+        $customers = Customer::where('name', 'like', '%' . $request->search . '%')->where('user', Auth::user()->id)
         ->paginate(10);
+        
         $request->session()->flash('message', 'Search results.');
     	return view('customer.list', ['customers' => $customers]);
     }

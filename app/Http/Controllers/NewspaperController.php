@@ -66,6 +66,7 @@ class NewspaperController extends Controller
         ]);
 
         $newspapers = Newspaper::where('name', 'like', '%' . $request->search . '%')
+        ->where('user', Auth::user()->id)
         ->paginate(10);
         $request->session()->flash('message', 'Search results.');
     	return view('newspaper.list', ['newspapers' => $newspapers]);

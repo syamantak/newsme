@@ -79,6 +79,7 @@ class CustomerNewspaperController extends Controller
         $customernewspapers = DB::table('customer_newspapers')
         ->join('customers', 'customers.id', '=', 'customer_newspapers.customer')
         ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->where('customers.user', Auth::user()->id)
         ->select('customer_newspapers.*')
         ->paginate(10);
 

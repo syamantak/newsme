@@ -83,6 +83,7 @@ class BillController extends Controller
         $bills = DB::table('customers')
         ->join('bills', 'customers.id', '=', 'bills.customer')
         ->where('customers.name', 'like', '%' . $request->search . '%')
+        ->where('bills.user', Auth::user()->id)
         ->select('bills.*')
         ->paginate(10);
         $request->session()->flash('message', 'Search results');

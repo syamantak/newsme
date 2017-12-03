@@ -89,6 +89,7 @@ class StockController extends Controller
         $stocks = DB::table('stocks')
         ->join('newspapers', 'newspapers.id', '=', 'stocks.newspaper')
         ->where('newspapers.name', 'like', '%' . $request->search . '%')
+        ->where('stocks.user', Auth::user()->id)
         ->select('stocks.*')
         ->paginate(10);
         $request->session()->flash('message', 'Search results.');
