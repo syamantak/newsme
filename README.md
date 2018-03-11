@@ -1,4 +1,4 @@
-# newsme
+# Newsme
 News paper agency management laravel app
 
 # Install
