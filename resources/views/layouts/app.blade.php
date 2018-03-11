@@ -96,6 +96,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
       <script src="//code.jquery.com/jquery-1.10.2.js"></script>
